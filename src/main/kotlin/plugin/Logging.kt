@@ -1,0 +1,25 @@
+package com.example.plugin
+
+import io.ktor.server.application.Application
+import io.ktor.server.application.install
+import io.ktor.server.plugins.callid.callId
+import io.ktor.server.plugins.calllogging.CallLogging
+import io.ktor.server.request.httpMethod
+import io.ktor.server.request.uri
+import org.slf4j.event.Level
+
+fun Application.configureLogging() {
+
+    install(CallLogging) {
+        level = Level.INFO
+
+        format { call ->
+            val status = call.response.status()
+            val method = call.request.httpMethod.value
+            val uri = call.request.uri
+            val requestId = call.callId ?: "no-id"
+
+            "[${requestId}] $method $uri -> $status"
+        }
+    }
+}
