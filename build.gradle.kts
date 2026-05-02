@@ -17,6 +17,8 @@ dependencies {
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.hsts)
     implementation(libs.ktor.server.routing.openapi)
+    implementation(libs.ktor.server.openapi)
+    implementation(libs.ktor.server.swagger)
     implementation(libs.ktor.server.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.koin.ktor)
@@ -37,6 +39,7 @@ dependencies {
     implementation(libs.flyway.database.postgresql)
     implementation(libs.hikaricp)
     implementation(libs.typesafe.config)
+    implementation(libs.swagger.codegen.generators)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
 }
